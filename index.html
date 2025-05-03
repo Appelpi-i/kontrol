@@ -3,399 +3,508 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Website - Дипломный проект</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Дипломная работа Заборцевой Миланы</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" href="icon1.png">
+    <style>
+        :root {
+            --primary: #FF69B4;
+            --secondary: #FFB6C1;
+            --dark: #333;
+            --light: #FFE4E1;
+            --white: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Glitch Header */
+        .glitch-wrapper {
+            width: 100%;
+            padding: 30px 0;
+            background-color: var(--secondary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .glitch {
+            position: relative;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 5px;
+            z-index: 1;
+        }
+
+        .glitch:before,
+        .glitch:after {
+            display: block;
+            content: attr(data-glitch);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0.8;
+        }
+
+        .glitch:before {
+            animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+            color: #0ff;
+            z-index: -1;
+        }
+
+        .glitch:after {
+            animation: glitch-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both infinite;
+            color: #ff00ff;
+            z-index: -2;
+        }
+
+        @keyframes glitch-color {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            to { transform: translate(0); }
+        }
+
+        /* Main Content */
+        .welcome-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: var(--primary);
+            margin: 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        /* Links Section */
+        .links-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .link-card {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .link-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .link-card a {
+            display: block;
+            margin: 10px 0;
+            color: var(--dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link-card a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Table Section */
+        .table-section {
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        table caption {
+            font-size: 1.5em;
+            margin: 10px 0;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 30px 0;
+        }
+
+        .form-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-option input {
+            margin-right: 8px;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #e64994;
+        }
+
+        /* Media Section */
+        .media-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .media-card {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .media-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        video {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Marquee */
+        marquee {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .glitch {
+                font-size: 30px;
+            }
+            
+            .links-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Шапка сайта -->
-    <header class="header">
-        <div class="container">
-            <a href="#" class="logo">Modern<span>Site</span></a>
-            
-            <nav class="navbar">
-                <a href="#home" class="active">Главная</a>
-                <a href="#about">О нас</a>
-                <a href="#services">Услуги</a>
-                <a href="#portfolio">Портфолио</a>
-                <a href="#team">Команда</a>
-                <a href="#contact">Контакты</a>
-            </nav>
-            
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
+    <div class="glitch-wrapper">
+        <div class="glitch" data-glitch="Дипломная работа Заборцевой Миланы">Дипломная работа Заборцевой Миланы</div>
+    </div>
 
-    <!-- Герой-секция со слайдером -->
-    <section class="home" id="home">
-        <div class="swiper home-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide slide" style="background: url(img/slide1.jpg) no-repeat;">
-                    <div class="content">
-                        <h3>Создаем современные сайты</h3>
-                        <p>Профессиональная разработка веб-сайтов с уникальным дизайном и адаптивной версткой</p>
-                        <a href="#contact" class="btn">Заказать проект</a>
-                    </div>
+    <div class="container">
+        <section class="welcome-section">
+            <h1>Добро пожаловать на мой сайт!</h1>
+            <p>Этот сайт создан в рамках моей дипломной работы и демонстрирует полученные знания и навыки.</p>
+            <a href="https://vk.com/yuppi__yo" class="btn">Сообщество в ВК</a>
+        </section>
+
+        <section>
+            <h2 class="section-title">Полезные ссылки</h2>
+            <div class="links-section">
+                <div class="link-card">
+                    <h3>Ресурсы по HTML/CSS/JS</h3>
+                    <a href="https://msiter.ru/references/html5-canvas/filltext">Сайт-помощник</a>
+                    <a href="https://jsitor.com/">Отладчик кода</a>
                 </div>
 
-                <div class="swiper-slide slide" style="background: url(img/slide2.jpg) no-repeat;">
-                    <div class="content">
-                        <h3>Индивидуальный подход</h3>
-                        <p>Разрабатываем решения, полностью соответствующие вашим бизнес-целям</p>
-                        <a href="#services" class="btn">Наши услуги</a>
-                    </div>
+                <div class="link-card">
+                    <h3>Ресурсы по Blender</h3>
+                    <a href="https://docs.blender.org/manual/ru/dev/#">Справочник Blender</a>
+                    <a href="https://ambientcg.com/">Текстуры для Blender</a>
+                    <a href="https://coolors.co/">Подбор цветов</a>
+                    <a href="https://colorscheme.ru/">Цветовые схемы</a>
+                    <a href="https://3dmodelizm.ru/uroki-3d-max/3dmax-lessons-2/263-basics-realistic-texturing-blender-guru">Основы текстурирования</a>
                 </div>
 
-                <div class="swiper-slide slide" style="background: url(img/slide3.jpg) no-repeat;">
-                    <div class="content">
-                        <h3>Технологии будущего</h3>
-                        <p>Используем современные технологии для создания быстрых и безопасных сайтов</p>
-                        <a href="#about" class="btn">Узнать больше</a>
-                    </div>
+                <div class="link-card">
+                    <h3>Ресурсы по Godot</h3>
+                    <a href="https://docs.godotengine.org/ru/4.x/getting_started/step_by_step/scripting_first_script.html#doc-scripting-first-script">Godot: Первый скрипт</a>
+                    <a href="https://docs.godotengine.org/ru/4.x/getting_started/step_by_step/scripting_player_input.html#doc-scripting-player-input">Godot: Ввод игрока</a>
+                    <a href="https://docs.godotengine.org/ru/4.x/getting_started/step_by_step/signals.html#doc-signals">Godot: Сигналы</a>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- О компании -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>О нашей компании</h2>
-                <p>Мы - команда профессионалов, создающая цифровые продукты с 2015 года</p>
-            </div>
-
-            <div class="row">
-                <div class="image">
-                    <img src="img/about.jpg" alt="О компании">
+        <section>
+            <h2 class="section-title">Мои работы</h2>
+            <div class="links-section">
+                <div class="link-card">
+                    <a href="game.html">Игра "Нерпочка"</a>
+                    <a href="mona.html">Игра "Mona"</a>
+                    <a href="https://www.figma.com/proto/CGbWPTQ23nCYsOE3Klqas2/Untitled?node-id=1-893&node-type=frame&t=KHGu28rTxPYaOamb-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1">Макет сайта в Figma</a>
                 </div>
-                <div class="content">
-                    <h3>Почему выбирают нас?</h3>
-                    <p>Наша компания специализируется на создании современных веб-сайтов и мобильных приложений. Мы сочетаем креативный дизайн с надежной технической реализацией.</p>
-                    <div class="features">
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Более 150 успешных проектов</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Команда из 20+ специалистов</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Соблюдение сроков</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Гарантия качества</span>
-                        </div>
-                    </div>
-                    <a href="#" class="btn">Читать далее</a>
+                <div class="link-card">
+                    <a href="https://stackblitzstartersz3zofme1-lsa0--8080--7f809d15.local-corp.webcontainer.io/">Визитка НАДИП</a>
+                    <a href="https://stackblitzstartersxwpdwcqg-01an--8080--7f809d15.local-corp.webcontainer.io/">Сайт автосалона</a>
+                    <a href="https://milana2024.wordpress.com/?_gl=1*1j75aj2*_gcl_au*MjA0MzU1MTI5NS4xNzI5OTI0MTMx">Мой сайт на WordPress</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Услуги -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Наши услуги</h2>
-                <p>Мы предлагаем полный цикл разработки цифровых продуктов</p>
-            </div>
+        <marquee behavior="scroll" direction="left" bgcolor="#FFC0CB">Идем дальше!</marquee>
 
-            <div class="box-container">
-                <div class="box">
-                    <i class="fas fa-code"></i>
-                    <h3>Веб-разработка</h3>
-                    <p>Создание сайтов любой сложности - от лендингов до сложных веб-приложений.</p>
-                </div>
-
-                <div class="box">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Мобильные приложения</h3>
-                    <p>Разработка кроссплатформенных мобильных приложений для iOS и Android.</p>
-                </div>
-
-                <div class="box">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>UI/UX Дизайн</h3>
-                    <p>Создание удобных и эстетичных интерфейсов, ориентированных на пользователя.</p>
-                </div>
-
-                <div class="box">
-                    <i class="fas fa-search"></i>
-                    <h3>SEO оптимизация</h3>
-                    <p>Повышение видимости вашего сайта в поисковых системах.</p>
-                </div>
-
-                <div class="box">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Digital маркетинг</h3>
-                    <p>Комплексное продвижение вашего бизнеса в интернете.</p>
-                </div>
-
-                <div class="box">
-                    <i class="fas fa-headset"></i>
-                    <h3>Техническая поддержка</h3>
-                    <p>Обслуживание и развитие ваших цифровых продуктов.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Портфолио -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Наши работы</h2>
-                <p>Примеры реализованных нами проектов</p>
-            </div>
-
-            <div class="filter-buttons">
-                <button class="btn active" data-filter="all">Все</button>
-                <button class="btn" data-filter="website">Веб-сайты</button>
-                <button class="btn" data-filter="app">Приложения</button>
-                <button class="btn" data-filter="design">Дизайн</button>
-            </div>
-
-            <div class="portfolio-container">
-                <div class="portfolio-box" data-category="website">
-                    <img src="img/portfolio1.jpg" alt="Портфолио 1">
-                    <div class="portfolio-layer">
-                        <h4>Корпоративный сайт</h4>
-                        <p>Для компании "ТехноЛогика"</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="portfolio-box" data-category="app">
-                    <img src="img/portfolio2.jpg" alt="Портфолио 2">
-                    <div class="portfolio-layer">
-                        <h4>Мобильное приложение</h4>
-                        <p>Фитнес-трекер "HealthTrack"</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="portfolio-box" data-category="design">
-                    <img src="img/portfolio3.jpg" alt="Портфолио 3">
-                    <div class="portfolio-layer">
-                        <h4>Брендинг</h4>
-                        <p>Для кофейни "Urban Beans"</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="portfolio-box" data-category="website">
-                    <img src="img/portfolio4.jpg" alt="Портфолио 4">
-                    <div class="portfolio-layer">
-                        <h4>Интернет-магазин</h4>
-                        <p>Для бренда одежды "EcoWear"</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="portfolio-box" data-category="app">
-                    <img src="img/portfolio5.jpg" alt="Портфолио 5">
-                    <div class="portfolio-layer">
-                        <h4>Бизнес-приложение</h4>
-                        <p>Для управления проектами</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-
-                <div class="portfolio-box" data-category="design">
-                    <img src="img/portfolio6.jpg" alt="Портфолио 6">
-                    <div class="portfolio-layer">
-                        <h4>Редизайн сайта</h4>
-                        <p>Для юридической фирмы</p>
-                        <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Команда -->
-    <section class="team" id="team">
-        <div class="container">
-            <div class="section-title">
-                <h2>Наша команда</h2>
-                <p>Профессионалы, которые работают над вашими проектами</p>
-            </div>
-
-            <div class="team-container">
-                <div class="team-box">
-                    <img src="img/team1.jpg" alt="Алексей Петров">
-                    <h3>Алексей Петров</h3>
-                    <p>Frontend-разработчик</p>
-                    <div class="social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-box">
-                    <img src="img/team2.jpg" alt="Екатерина Смирнова">
-                    <h3>Екатерина Смирнова</h3>
-                    <p>UI/UX Дизайнер</p>
-                    <div class="social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-box">
-                    <img src="img/team3.jpg" alt="Дмитрий Иванов">
-                    <h3>Дмитрий Иванов</h3>
-                    <p>Backend-разработчик</p>
-                    <div class="social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="team-box">
-                    <img src="img/team4.jpg" alt="Ольга Кузнецова">
-                    <h3>Ольга Кузнецова</h3>
-                    <p>Менеджер проектов</p>
-                    <div class="social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Свяжитесь с нами</h2>
-                <p>Готовы обсудить ваш проект? Оставьте заявку!</p>
-            </div>
-
-            <div class="row">
-                <div class="contact-info">
-                    <div class="info-box">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="details">
-                            <h4>Адрес:</h4>
-                            <p>г. Москва, ул. Примерная, 123</p>
-                        </div>
-                    </div>
-
-                    <div class="info-box">
-                        <i class="fas fa-envelope"></i>
-                        <div class="details">
-                            <h4>Email:</h4>
-                            <p>info@modernsite.ru</p>
-                        </div>
-                    </div>
-
-                    <div class="info-box">
-                        <i class="fas fa-phone-alt"></i>
-                        <div class="details">
-                            <h4>Телефон:</h4>
-                            <p>+7 (123) 456-78-90</p>
-                        </div>
-                    </div>
-
-                    <div class="info-box">
-                        <i class="fas fa-clock"></i>
-                        <div class="details">
-                            <h4>Часы работы:</h4>
-                            <p>Пн-Пт: 9:00 - 18:00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="contact-form">
-                    <div class="input-box">
-                        <input type="text" placeholder="Ваше имя" required>
-                        <input type="email" placeholder="Ваш Email" required>
-                    </div>
-                    <div class="input-box">
-                        <input type="text" placeholder="Тема">
-                        <input type="tel" placeholder="Телефон">
-                    </div>
-                    <textarea placeholder="Ваше сообщение" required></textarea>
-                    <button type="submit" class="btn">Отправить</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-box">
-                    <h3>О компании</h3>
-                    <p>ModernSite - современное digital-агентство полного цикла, специализирующееся на веб-разработке и digital-маркетинге.</p>
-                    <div class="social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-box">
-                    <h3>Услуги</h3>
+        <section>
+            <h2 class="section-title">Что я изучила</h2>
+            <div class="links-section">
+                <div class="link-card">
+                    <h3>Основные технологии</h3>
                     <ul>
-                        <li><a href="#">Веб-разработка</a></li>
-                        <li><a href="#">Мобильные приложения</a></li>
-                        <li><a href="#">UI/UX Дизайн</a></li>
-                        <li><a href="#">SEO оптимизация</a></li>
-                        <li><a href="#">Digital маркетинг</a></li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
                     </ul>
                 </div>
-
-                <div class="footer-box">
-                    <h3>Быстрые ссылки</h3>
+                <div class="link-card">
+                    <h3>Приобретенные навыки</h3>
                     <ul>
-                        <li><a href="#home">Главная</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#services">Услуги</a></li>
-                        <li><a href="#portfolio">Портфолио</a></li>
-                        <li><a href="#contact">Контакты</a></li>
+                        <li>Создание веб-сайтов</li>
+                        <li>3D-моделирование</li>
+                        <li>Разработка игр</li>
+                        <li>Работа с графическими редакторами</li>
                     </ul>
                 </div>
+            </div>
+        </section>
 
-                <div class="footer-box">
-                    <h3>Подписаться</h3>
-                    <p>Подпишитесь на нашу рассылку, чтобы получать новости и специальные предложения.</p>
-                    <form class="subscribe-form">
-                        <input type="email" placeholder="Ваш Email" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
+        <marquee bgcolor="#FFFFFF">Смотрим дальше</marquee>
+
+        <section class="table-section">
+            <h2 class="section-title">Пример таблицы</h2>
+            <table border="1">
+                <caption>Демонстрационная таблица</caption>
+                <colgroup>
+                    <col style="width:20%">
+                    <col style="width:20%">
+                    <col style="width:30%">
+                    <col style="width:30%">
+                </colgroup>
+                <tr>
+                    <td rowspan="2">Вау</td>
+                    <td>1</td>
+                    <td>Первый</td>
+                    <td>Второй</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Вот это да</td>
+                    <td>Ура</td>
+                </tr>
+            </table>
+            
+            <div class="link-card" style="margin-top: 20px;">
+                <h3>Код для создания таблицы</h3>
+                <pre>
+&lt;table border="1"&gt;
+  &lt;caption&gt;Демонстрационная таблица&lt;/caption&gt;
+  &lt;colgroup&gt;
+    &lt;col style="width:20%"&gt;
+    &lt;col style="width:20%"&gt;
+    &lt;col style="width:30%"&gt;
+    &lt;col style="width:30%"&gt;
+  &lt;/colgroup&gt;
+  &lt;tr&gt;
+    &lt;td rowspan="2"&gt;Вау&lt;/td&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Первый&lt;/td&gt;
+    &lt;td&gt;Второй&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;2&lt;/td&gt;
+    &lt;td&gt;Вот это да&lt;/td&gt;
+    &lt;td&gt;Ура&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+                </pre>
+            </div>
+        </section>
+
+        <section class="media-section">
+            <div class="media-card">
+                <img src="фото.png" alt="Пример работы">
+                <p>Пример моей работы</p>
+            </div>
+            <div class="media-card">
+                <img src="фото2.png" alt="Еще один пример работы">
+                <p>Другой пример работы</p>
+            </div>
+            <div class="media-card">
+                <video width="320" height="240" controls poster="logg.jpg">
+                    <source src="sunset.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео тег.
+                </video>
+                <p>Пример видео</p>
+            </div>
+        </section>
+
+        <section class="form-section">
+            <h2>Форма обратной связи</h2>
+            <form action="index.html" method="post">
+                <h3>Ваша основная информация</h3>
+                
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="student_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mail">Email</label>
+                    <input type="email" id="mail" name="student_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="student_password" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Возраст:</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="до_16" value="до_16" name="user_age" required>
+                            <label for="до_16">до 16</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="больше_16" value="больше_16" name="user_age">
+                            <label for="больше_16">больше 16</label>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Твой профиль</h3>
+                
+                <div class="form-group">
+                    <label for="bio">Биография</label>
+                    <textarea id="bio" name="student_bio" rows="5"></textarea>
+                </div>
+
+                <button type="submit">Отправить</button>
+                <button type="reset">Сбросить</button>
+            </form>
+        </section>
+
+        <section>
+            <h2 class="section-title">Тесты и дополнительные материалы</h2>
+            <div class="links-section">
+                <div class="link-card">
+                    <a href="https://onlinetestpad.com/hdwqjvo65h6po">Тест по HTML</a>
+                    <a href="https://milana2024.wordpress.com/">Мой сайт на WordPress</a>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="copyright">
-            <p>&copy; 2023 ModernSite. Все права защищены.</p>
-        </div>
-    </footer>
-
-    <!-- Кнопка "Наверх" -->
-    <a href="#home" class="scroll-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <!-- Подключение скриптов -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
+        <section class="media-section">
+            <div class="media-card">
+                <video width="320" height="240" controls>
+                    <source src="0001-0030.mkv" type="video/mkv">
+                    Ваш браузер не поддерживает видео тег.
+                </video>
+                <p>Демонстрационное видео</p>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
